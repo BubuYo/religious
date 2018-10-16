@@ -11,14 +11,13 @@ class Solution:
         :type l2: ListNode
         :rtype: ListNode
         """
-        p = dummy = ListNode(-1)
-        while l1 or l2:
-            tmp1 = l1.val if l1 else float('inf')
-            tmp2 = l2.val if l2 else float('inf')
-            p.next = ListNode(min(tmp1, tmp2))
-            if tmp1 < tmp2:
-                l1 = l1 and l1.next
+        p = dummy = ListNode('bububububu')
+        while l1 and l2:
+            p.next = ListNode(min(l1.val, l2.val))
+            if l1.val < l2.val:
+                l1 = l1.next
             else:
-                l2 = l2 and l2.next
+                l2 = l2.next
             p = p.next
+        p.next = l1 if l1 else l2
         return dummy.next
