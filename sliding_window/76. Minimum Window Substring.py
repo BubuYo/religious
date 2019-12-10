@@ -1,6 +1,5 @@
 import collections
 
-
 class Solution(object):
     def minWindow(self, s, t):
         """
