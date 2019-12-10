@@ -20,4 +20,3 @@ class Solution(object):
                 if J == 0 or right - left <= J - I:
                     I, J = left, right
         return s[I:J]
-
