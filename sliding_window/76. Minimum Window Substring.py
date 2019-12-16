@@ -1,6 +1,5 @@
 import collections
 
-
 class Solution(object):
     def minWindow(self, s, t):
         """
@@ -20,4 +19,3 @@ class Solution(object):
                 if J == 0 or right - left <= J - I:
                     I, J = left, right
         return s[I:J]
-
