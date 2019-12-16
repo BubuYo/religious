@@ -15,3 +15,8 @@ class Solution:
             ans = (ans << 1) | (n & 1)
             n >>= 1
         return ans
+
+
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        return int(bin(n).split("0b")[-1].zfill(32)[::-1], 2)
