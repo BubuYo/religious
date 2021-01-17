@@ -7,8 +7,7 @@ class Solution:
         """
         map = {}
 
-        for i, n in enumerate(numbers):
-            if target - n in map:
-                return [map[target - n], i + 1]
-            else:
-                map[n] = i + 1
+        for idx, v in enumerate(numbers):
+            if target - v in map:
+                return [map[target - v] + 1, idx + 1]
+            map[v] = idx

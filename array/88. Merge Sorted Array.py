@@ -14,5 +14,5 @@ class Solution:
             else:
                 nums1[m + n - 1] = nums2[n - 1]
                 n -= 1
-        if n > 0:
+        if n:
             nums1[:n] = nums2[:n]
