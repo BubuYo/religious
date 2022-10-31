@@ -1,5 +1,5 @@
 # 逢跌则加 ans 增量，并设置 l 为当前下跌处
-# 如果最后两个元素是上升，则可以购买卖出获利，还需要再加上
+# 如果最后几个元素都是上升，则可以购买卖出获利，还需要再加上
 
 
 class Solution:
@@ -16,4 +16,5 @@ class Solution:
             if prices[i] < prices[i - 1]:
                 ans += prices[i - 1] - l
                 l = prices[i]
+
         return ans + max(prices[-1] - l, 0)
