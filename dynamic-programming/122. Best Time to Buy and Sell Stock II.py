@@ -12,14 +12,12 @@ class Solution:
         """
         if not prices:
             return 0
-        l = prices[0]
-        ans = 0
+        p0 = 0
+        p1 = -prices[0]
         for i in range(1, len(prices)):
-            if prices[i] < prices[i - 1]:
-                ans += prices[i - 1] - l
-                l = prices[i]
-
-        return ans + max(prices[-1] - l, 0)
+            p0 = max(p0, p1 + prices[i])
+            p1 = max(p1, p0 - prices[i])  # 和上一题唯一区别就是多了个 p0
+        return p0
 
 
 '''
