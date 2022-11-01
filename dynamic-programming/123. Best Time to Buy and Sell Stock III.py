@@ -1,17 +1,20 @@
 class Solution:
-    def maxProfit(self, prices) -> int:
-        if not prices:
+    def maxProfit(self, prices: List[int]) -> int:
+        if len(prices) < 2:
             return 0
-        l = prices[0]
-        ans = []
-        for i in range(1, len(prices)):
-            if prices[i] < prices[i - 1]:
-                ans.append(prices[i - 1] - l)
-                l = prices[i]
-        ans.append(max(prices[-1] - l, 0))
-        ans.sort(reverse=True)
-        return sum(ans[:2])  # 失败，因为出现新情况：1324时，13 24 两次截取, 但是因为只能截取两次交易，所以只能是 14，不能只取到 13 和 24
+        k = 2
+        l = len(prices)
 
+        dp = [[[0 for _ in range(2)] for _ in range(k+1)] for _ in range(l)]
+        for e in range(k + 1):
+            dp[0][e][0] = 0
+            dp[0][e][1] = -prices[0]
+        for i in range(1, l):
+            for j in range(k, 0, -1):
+                dp[i][j][0] = max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i])
+                dp[i][j][1] = max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i])
+
+        return dp[l - 1][k][0]
 
 
 '''
