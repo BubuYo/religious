@@ -12,13 +12,12 @@ class Solution:
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        if not root:
-            return []
+        if not root: return []
         ans = [[root.val]]
         queue = [root]
         while queue:
             levelans = []
-            for _ in range(len(queue)):
+            for _ in range(len(queue)): #[0, size-1]
                 root = queue.pop(0)
                 if root.left:
                     levelans.append(root.left.val)
